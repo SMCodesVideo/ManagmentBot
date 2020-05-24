@@ -1,0 +1,89 @@
+{
+    "name": "robot-manager",
+    "version": "0.1.0",
+    "private": false,
+    "main": "electron/server.js",
+    "productName": "Gerenciador de bot",
+    "homepage": "./",
+    "build": {
+        "files": [
+            "build/**/*",
+            "node_modules/**/*"
+        ],
+        "publish": {
+            "provider": "github",
+            "repo": "managment-bot",
+            "owner": "SMCodesVideo"
+        },
+        "productName": "ManagmentBot",
+        "copyright": "Copyright © 2020 Samuel Pereira da Silva (SMCodes)",
+        "mac": {
+            "category": "public.app-category.developer-tools",
+            "target": "tar.gz",
+            "icon": "build/icone.png"
+        },
+        "linux": {
+            "category": "Development",
+            "icon": "build/icone.png"
+        },
+        "win": {
+            "icon": "build/icone.png"
+        },
+        "appId": "br.com.smcodes.managment.bot"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && export ELECTRON_START_URL=http://localhost:3000 && electron electron/server.js\"",
+        "build-electron": "mkdir build/app && cp -r electron/. build/electron && cp -r app/. build/app/",
+        "package": "electron-builder build -mwl -c.extraMetadata.main=build/electron/server.js --publish never"
+    },
+    "dependencies": {
+        "@testing-library/jest-dom": "^4.2.4",
+        "@testing-library/react": "^9.3.2",
+        "@testing-library/user-event": "^7.1.2",
+        "@unform/core": "^2.1.0",
+        "@unform/web": "^2.1.0",
+        "dotenv": "^8.2.0",
+        "electron-is-dev": "^1.2.0",
+        "electron-react-devtools": "^0.5.3",
+        "express": "^4.17.1",
+        "fs": "^0.0.1-security",
+        "get-color-sm": "^1.0.1",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-icons": "^3.10.0",
+        "react-router-dom": "^5.2.0",
+        "react-scripts": "3.4.1",
+        "shelljs": "^0.8.4",
+        "styled-components": "^5.1.0",
+        "sweetalert": "^2.1.2",
+        "transform-dates": "^1.0.0",
+        "tree-kill": "^1.2.2",
+        "xterm": "^4.6.0"
+    },
+    "devDependencies": {
+        "concurrently": "^5.2.0",
+        "electron": "^9.0.0",
+        "electron-devtools-installer": "^3.0.0",
+        "wait-on": "^5.0.0"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "license": "MIT"
+}
